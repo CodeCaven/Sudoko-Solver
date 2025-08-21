@@ -18,6 +18,16 @@ hard_board = [[".",".","9","7","4","8",".",".","."],
              [".",".",".",".",".",".",".",".","6"],
              [".",".",".","2","7","5","9",".","."]]
 
+hard_board2 = [[".",".",".",".",".",".",".",".","."],
+               [".","9",".",".","1",".",".","3","."],
+               [".",".","6",".","2",".","7",".","."],
+               [".",".",".","3",".","4",".",".","."],
+               ["2","1",".",".",".",".",".","9","8"],
+               [".",".",".",".",".",".",".",".","."],
+               [".",".","2","5",".","6","4",".","."],
+               [".","8",".",".",".",".",".","1","."],
+               [".",".",".",".",".",".",".",".","."]]
+
 def printBoard(board):
     for i in range(len(board)):
         if i % 3 == 0:
@@ -163,7 +173,11 @@ def isValid(board):
         all_nums = []
         for j in range(9):
             if board[i][j] != ".":
-                all_nums.append(board[i][j])
+                try:
+                    int(board[i][j])
+                    all_nums.append(board[i][j])
+                except:
+                    return False
 
         if len(all_nums) != len(set(all_nums)):
             return False
@@ -173,7 +187,11 @@ def isValid(board):
         all_nums = []
         for i in range(9):
             if board[i][j] != ".":
-                all_nums.append(board[i][j])
+                try:
+                    int(board[i][j])
+                    all_nums.append(board[i][j])
+                except:
+                    return False
 
         if len(all_nums) != len(set(all_nums)):
             return False
@@ -186,7 +204,11 @@ def isValid(board):
         all_nums = []
         for i in range(9):
             if current_square[i] != ".":
-                all_nums.append(current_square[i])
+                try:
+                    int(current_square[i])
+                    all_nums.append(current_square[i])
+                except:
+                    return False
 
         if len(all_nums) != len(set(all_nums)):
             return False
@@ -283,5 +305,5 @@ if __name__ == "__main__":
             new_row.append([1, 2, 3, 4, 5, 6, 7, 8, 9])
         allowed.append(new_row)
 
-    fillBoard(hard_board, allowed)
-    solveSudoko(hard_board, allowed)
+    fillBoard(hard_board2, allowed)
+    solveSudoko(hard_board2, allowed)
